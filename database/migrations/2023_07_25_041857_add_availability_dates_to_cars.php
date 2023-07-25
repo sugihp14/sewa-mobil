@@ -1,0 +1,36 @@
+
+
+<?php // database/migrations/xxxx_xx_xx_add_availability_dates_to_cars.php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddAvailabilityDatesToCars extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('cars', function (Blueprint $table) {
+            $table->date('availability_start_date')->nullable();
+            $table->date('availability_end_date')->nullable();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('cars', function (Blueprint $table) {
+            $table->dropColumn('availability_start_date');
+            $table->dropColumn('availability_end_date');
+        });
+    }
+}
